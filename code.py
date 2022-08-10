@@ -1,13 +1,15 @@
+# use this for the frozen library
+# from PYKB import *
 
+# to use this, copy over keyboard folder to 'lib'
 from keyboard import *
-
 
 keyboard = Keyboard()
 
-___ = TRANSPARENT
+___ = TRANSPARENT  # takes the underlying keybind
 BOOT = BOOTLOADER
 L1 = LAYER_TAP(1)
-L2D = LAYER_TAP(2, D)
+L2F = LAYER_TAP(2, F)
 L3B = LAYER_TAP(3, B)
 LSFT4 = LAYER_MODS(4, MODS(LSHIFT))
 RSFT4 = LAYER_MODS(4, MODS(RSHIFT))
@@ -17,14 +19,18 @@ L5S = LAYER_TAP(5, S)
 SCC = MODS_TAP(MODS(RCTRL), ';')
 SINS = MODS_KEY(MODS(SHIFT), INSERT)
 
+# Display related renames
+DBU = DISPLAY_BRIGHTNESS_UP
+DBD = DISPLAY_BRIGHTNESS_DOWN
+
 keyboard.keymap = (
     # layer 0
     (
         ESC,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, '-', '=', BACKSPACE,
         TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, '[', ']', '|',
-        CAPS,  A,   S, L2D,   F,   G,   H,   J,   K,   L, SCC, '"',    ENTER,
+        LCTRL,  A,   S,   D, L2F,   G,   H,   J,   K,   L, SCC, '"',    ENTER,
         LSFT4, Z,   X,   C,   V, L3B,   N,   M, ',', '.', '/',         RSFT4,
-        LCTRL, LGUI, LALT,          SPACE,            RALT, MENU,  L1, RCTRL
+        CAPS, LALT, LGUI,          SPACE,            RALT, RGUI,  L1, RCTRL
     ),
 
     # layer 1
@@ -46,13 +52,22 @@ keyboard.keymap = (
     ),
 
     # layer 3
+    # NOTE: currently I don't need any bluetooth related features
+    # (
+    #     BT_TOGGLE,BT1,BT2, BT3,BT4,BT5,BT6,BT7, BT8, BT9, BT0, ___, ___, ___,
+    #     RGB_MOD, ___, ___, ___, ___, ___,___,USB_TOGGLE,___,___,___,___,___, ___,
+    #     RGB_TOGGLE,HUE_RGB,RGB_HUE,SAT_RGB,RGB_SAT,___,___,___,___,___,___,___,      ___,
+    #     ___, ___, ___, ___, ___, ___, ___, ___,VAL_RGB,RGB_VAL, ___,           ___,
+    #     ___, ___, ___,                ___,               ___, ___, ___,  ___
+    # ),
     (
-        BT_TOGGLE,BT1,BT2, BT3,BT4,BT5,BT6,BT7, BT8, BT9, BT0, ___, ___, ___,
-        RGB_MOD, ___, ___, ___, ___, ___,___,USB_TOGGLE,___,___,___,___,___, ___,
-        RGB_TOGGLE,HUE_RGB,RGB_HUE,SAT_RGB,RGB_SAT,___,___,___,___,___,___,___,      ___,
-        ___, ___, ___, ___, ___, ___, ___, ___,VAL_RGB,RGB_VAL, ___,           ___,
+        ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+        ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, DBD, DBU, ___,
+        ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,      ___,
+        ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,           ___,
         ___, ___, ___,                ___,               ___, ___, ___,  ___
     ),
+
 
     # layer 4
     (
@@ -109,18 +124,16 @@ def pairs_handler(dev, n):
     dev.send_text('You just triggered pair keys #{}\n'.format(n))
 
 
-keyboard.macro_handler = macro_handler
-keyboard.pairs_handler = pairs_handler
-
 # ESC(0)    1(1)   2(2)   3(3)   4(4)   5(5)   6(6)   7(7)   8(8)   9(9)   0(10)  -(11)  =(12)  BACKSPACE(13)
 # TAB(27)   Q(26)  W(25)  E(24)  R(23)  T(22)  Y(21)  U(20)  I(19)  O(18)  P(17)  [(16)  ](15)   \(14)
 # CAPS(28)  A(29)  S(30)  D(31)  F(32)  G(33)  H(34)  J(35)  K(36)  L(37)  ;(38)  "(39)      ENTER(40)
 #LSHIFT(52) Z(51)  X(50)  C(49)  V(48)  B(47)  N(46)  M(45)  ,(44)  .(43)  /(42)            RSHIFT(41)
 # LCTRL(53)  LGUI(54)  LALT(55)               SPACE(56)          RALT(57)  MENU(58)  Fn(59)  RCTRL(60)
 
+keyboard.macro_handler = macro_handler
+keyboard.pairs_handler = pairs_handler
 # Pairs: J & K, U & I
 keyboard.pairs = [{35, 36}, {20, 19}]
-
 # keyboard.verbose = False
 
 keyboard.run()
