@@ -22,6 +22,9 @@ SINS = MODS_KEY(MODS(SHIFT), INSERT)
 # Display related renames
 DBU = DISPLAY_BRIGHTNESS_UP
 DBD = DISPLAY_BRIGHTNESS_DOWN
+PPT = TRANSPORT_PREV_TRACK
+PNT = TRANSPORT_NEXT_TRACK
+PPP = TRANSPORT_PLAY_PAUSE
 
 keyboard.keymap = (
     # layer 0
@@ -38,7 +41,7 @@ keyboard.keymap = (
         '`',  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12, DEL,
         ___, ___,  UP, ___, ___, ___, ___, ___, ___, ___,SUSPEND,___,___,___,
         ___,LEFT,DOWN,RIGHT,___, ___, ___, ___, ___, ___, ___, ___,      ___,
-        ___, ___, ___, ___, ___,BOOT, ___,MACRO(0), ___, ___, ___,       ___,
+        ___, ___, ___, ___, ___,BOOT, ___, ___, ___, ___, ___,       ___,
         ___, ___, ___,                ___,               ___, ___, ___,  ___
     ),
 
@@ -47,7 +50,7 @@ keyboard.keymap = (
         '`',  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10, F11, F12, DEL,
         ___, ___, ___, ___, ___, ___,HOME,PGUP, ___, ___,SINS,AUDIO_VOL_DOWN,AUDIO_VOL_UP,AUDIO_MUTE,
         ___, ___, ___, ___, ___, ___,LEFT,DOWN, UP,RIGHT, ___, ___,      ___,
-        ___, ___, ___, ___, ___, ___,PGDN,END, ___, ___, ___,           ___,
+        ___, ___, ___, ___, ___, ___,PGDN,END, PPT, PNT, PPP,           ___,
         ___, ___, ___,                ___,               ___, ___, ___,  ___
     ),
 
