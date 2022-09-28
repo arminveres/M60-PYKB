@@ -6,6 +6,11 @@ from keyboard import *
 
 keyboard = Keyboard()
 
+# General keyboard settings
+keyboard.matrix.debounce_time = 8  # miliseconds
+keyboard.tap_delay = 200
+keyboard.fast_type_thresh = 100
+
 ___ = TRANSPARENT  # takes the underlying keybind
 BOOT = BOOTLOADER
 L1 = LAYER_TAP(1)
@@ -18,6 +23,8 @@ L5S = LAYER_TAP(5, S)
 # Semicolon & Ctrl
 SCC = MODS_TAP(MODS(RCTRL), ';')
 SINS = MODS_KEY(MODS(SHIFT), INSERT)
+# When tapping, use as ESC, when holding, as LCTRL
+ESCTL = MODS_TAP(MODS(LCTRL), ESC)
 
 # Display related renames
 DBU = DISPLAY_BRIGHTNESS_UP

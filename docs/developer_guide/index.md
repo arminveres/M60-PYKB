@@ -16,4 +16,4 @@ By default, The CircuitPython firmware of M60 has two frozen modules - [`adafrui
 
 
 ## Develop with C/C++, Rust, JerryScript, TinyGo
-The M60 keybaord also supports C/C++, Rust, JerryScript and TinyGo. To create your own firmware, read [the hardware information](hardware.md) to get started.
+The M60 keyboard also supports C/C++, Rust, JerryScript and TinyGo. To create your own firmware, read [the hardware information](hardware.md) to get started.
