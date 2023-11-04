@@ -13,4 +13,4 @@ all: deploy lib
 deploy:
 	cp code.py $(DEST)
 lib:
-	cp -r keyboard/ $(DEST)/lib
+	cp -r lib/* $(DEST)/lib
